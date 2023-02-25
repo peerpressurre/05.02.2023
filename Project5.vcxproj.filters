@@ -4,10 +4,21 @@
     <Filter Include="main">
       <UniqueIdentifier>{b770591d-4b64-40f4-b426-72b75a06337a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="String Lib">
+      <UniqueIdentifier>{5623e2f4-724f-4d3b-b5f5-3db423087cb7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>main</Filter>
     </ClCompile>
+    <ClCompile Include="string_l.cpp">
+      <Filter>String Lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="String_lib.h">
+      <Filter>String Lib</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
