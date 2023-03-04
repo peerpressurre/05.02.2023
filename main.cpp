@@ -58,17 +58,19 @@ char* mystrstr(char* str1, char* str2)
 {
 	int counter = 0;
 	int i, j, temp = 0;
-	for (size_t i = 0; i < mystrlen(str2); i++)
+	char* res = new char;
+	for ( i = 0; i < mystrlen(str2); i++)
 	{
-		for (size_t j = temp; j < mystrlen(str1); j++)
+		for ( j = temp; j < mystrlen(str1); j++)
 		{
 			if (str2[i] == str1[j])
 			{
 				counter++;
-				temp = j + 1;
+	            temp = j ++;
 				if (counter == 2 && counter > 0)
 				{
-					return j - 1;
+					res = &str1[j-1];
+					return res;
 					break;
 				}
 				break;
@@ -92,10 +94,11 @@ int main()
 	const int size = 20;
 	char s = 's';
 	const char str[size] = "hello bim";
-	const char str2[20]= "two";
-	char str1[size] = "one ";
-	char strs[size] = "puras";
+    char str2[20]= "pur";
+	char str1[size] = "one purr";
+	char strs[size] = "strs";
 
+	cout << "Mystrstr: " << mystrstr(str1, str2) << endl;
 	cout << "Mystrlen: " << mystrlen(str) << endl;
 	cout << "Mystrcpy str2: " << str2 << endl;
 	cout << "Mystrcpy str1: " << mystrcpy(str1, str2) << endl;
@@ -106,5 +109,6 @@ int main()
 		int index = ptr - strs;
 		cout << "Mystrchr: " << strs << "\t" << index << endl;
 	}
+	
     return 0;
 }
