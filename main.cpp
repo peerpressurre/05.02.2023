@@ -1,5 +1,8 @@
 #include <iostream>
 #include "string_lib.h"
+#include <cstring>
+#include <stdio.h>
+
 using namespace std;
 
 int mystrlen(const char* str)
@@ -98,8 +101,6 @@ char* mystrstr(char* str1, char* str2) {
 			}
 		}
 		if (match) {
-			cout << "MATCH FOUND" << endl;
-			cout << &str1[i - 1] << endl;
 			return &str1[i - 1];
 		}
 	}
@@ -136,6 +137,31 @@ int main()
 	cout << "Mystrcpy str1: " << mystrcpy(str1, str2) << endl;
 	cout << "Mystrcat: " << mystrcat(str1, str2) << endl;*/
 	
+	int switch_on;
+	cout << "------Choose function------" << endl;
+	cout << "|     1 - mystrlen        |" << endl;
+	cout << "|     2 - mystrcpy        |" << endl;
+	cout << "|     3 - mystrcat        |" << endl;
+	cout << "|     4 - mystrchr        |" << endl;
+	cout << "|     1 - mystrstr        |" << endl;
+	cout << "---------------------------" << endl;
+
+	switch (switch_on)
+	{
+	case1:
+	{
+			const int size = 100;
+			const char* str = new char[size];
+			cout << "Enter string: ";
+			gets_s(str, size);
+			cout << "Mystrlen: " << mystrlen(str) << endl;
+	}
+	default:
+		break;
+	}
+
+
+
 	
     return 0;
 }
