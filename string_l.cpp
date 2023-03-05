@@ -1,5 +1,7 @@
 #include "string_lib.h"
 
+using namespace std;
+
 int mystrlen(const char* str)
 {
 	int i = 0;
