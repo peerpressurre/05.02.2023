@@ -54,39 +54,58 @@ char* mystrchr(char* str, char s)
 	return nullptr;
 }
 
-char* mystrstr(char* str1, char* str2)
-{
-	int counter = 0;
-	int i, j, temp = 0;
-	char* res = new char;
-	for ( i = 0; i < mystrlen(str2); i++)
-	{
-		for ( j = temp; j < mystrlen(str1); j++)
-		{
-			if (str2[i] == str1[j])
-			{
-				counter++;
-	            temp = j ++;
-				if (counter == 2 && counter > 0)
-				{
-					res = &str1[j-1];
-					return res;
-					break;
-				}
+//char* mystrstr(char* str1, char* str2, int j)
+//{
+//	int counter = 0;
+//	int i, temp = 0;
+//	for ( i = 0; i < mystrlen(str2); i++)
+//	{
+//		for ( j = temp; j < mystrlen(str1); j++)
+//		{
+//			if (str2[i] == str1[j])
+//			{
+//				counter++;
+//	            temp = j ++;
+//				if (counter == 2 && counter > 0)
+//				{
+//					return j;
+//					break;
+//				}
+//				break;
+//			}
+//			else
+//			{
+//				counter = 0;
+//			}
+//		}
+//	}
+//	if (counter < 2 && counter < 0)
+//	{
+//		return 0;
+//	}
+//}
+
+char* mystrstr(char* str1, char* str2) {
+	int len1 = strlen(str1);
+	int len2 = strlen(str2);
+
+	for (int i = 0; i <= len1 - len2; i++) {
+		bool match = true;
+		for (int j = 0; j < len2; j++) {
+			if (str1[i + j] != str2[j]) {
+				match = false;
 				break;
 			}
-			else
-			{
-				counter = 0;
-			}
+		}
+		if (match) {
+			cout << "MATCH FOUND" << endl;
+			cout << &str1[i - 1] << endl;
+			return &str1[i - 1];
 		}
 	}
-	if (counter < 2 && counter < 0)
-	{
-		return 0;
-	}
-}
 
+	return nullptr;
+}
 
 // gets_s()
 int main()
@@ -95,20 +114,28 @@ int main()
 	char s = 's';
 	const char str[size] = "hello bim";
     char str2[20]= "pur";
-	char str1[size] = "one purr";
-	char strs[size] = "strs";
+	char str1[size] = "one bom purr";
+	char strs[size] = "trs";
 
-	cout << "Mystrstr: " << mystrstr(str1, str2) << endl;
-	cout << "Mystrlen: " << mystrlen(str) << endl;
-	cout << "Mystrcpy str2: " << str2 << endl;
-	cout << "Mystrcpy str1: " << mystrcpy(str1, str2) << endl;
-	cout << "Mystrcat: " << mystrcat(str1, str2) << endl;
+	
 	char* ptr = mystrchr(strs, s);
 	if (ptr != nullptr)
 	{
 		int index = ptr - strs;
 		cout << "Mystrchr: " << strs << "\t" << index << endl;
 	}
+	char* ptr1 = mystrstr(str1, str2);
+	if (ptr1 != nullptr)
+	{
+		int index = ptr1 - str1;
+		cout << "Mystrstr: " << str1 << "\t" << index + 1 << endl;
+	}
+	//cout << "Mystrstr: " << mystrstr(str1, str2) << endl;
+	/*cout << "Mystrlen: " << mystrlen(str) << endl;
+	cout << "Mystrcpy str2: " << str2 << endl;
+	cout << "Mystrcpy str1: " << mystrcpy(str1, str2) << endl;
+	cout << "Mystrcat: " << mystrcat(str1, str2) << endl;*/
+	
 	
     return 0;
 }
